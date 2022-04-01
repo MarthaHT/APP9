@@ -1,0 +1,220 @@
+<DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+
+
+<head>
+<style>
+    th, td{
+        text-align: center;
+    }
+     
+    th, td{
+        padding: 10px;
+    }
+</style>
+  <hr>
+    <FONT FACE="times new roman">  <title> Mejora de imágenes </title>
+</head>
+
+<body style="background-color:#ECFFFF;">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</body>
+
+<body>
+    <div align="center">
+    <img src="https://i.ibb.co/FKD7vw6/Imagenolog-a.png"/>
+    </div>
+
+<p>
+<div class="container">
+<div class="row">
+
+    <h2>Seleccione la imagen a procesar
+    </h2>
+    
+
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="Archivo" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+        
+        
+
+        
+        
+        <table style="width: 100%;">
+        
+        <tr>
+        <td>         
+                   
+                   
+                   <p>
+                       {% with messages = get_flashed_messages() %}
+                         {% if messages %}
+                           <ul>
+                           <h2>Original
+                           </h2>
+                           {% for message in messages %}
+                             <li>{{ message }}</li>
+                           {% endfor %}
+                           </ul>
+                         {% endif %}
+                       {% endwith %}
+                  
+                   {% if filename %}
+                       <div>
+                       <h2>Imagen Original
+                       </h2>
+                           <img src="{{ url_for('display_image2', filenameo=filenameo) }}"  width="400px">
+                           
+                      
+                   {% endif %}
+                    </p>
+                    
+               </div> </td>
+         <td>         
+                
+                    
+                    <p>
+                        {% with messages = get_flashed_messages() %}
+                          {% if messages %}
+                            <ul>
+                            <h2>Imagen Procesada
+                            </h2>
+                            {% for message in messages %}
+                              <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                          {% endif %}
+                        {% endwith %}
+                   
+                    {% if filename %}
+                        <div>
+                        <h2>Imagen Procesada
+                        </h2>
+                            <img src="{{ url_for('display_image1', filename=filename) }}"  width="400px">
+                          
+                       
+                    {% endif %}
+                     </p>
+                     
+                </div> </td>
+        
+        </tr>
+
+        <tr>
+        <td> </td>
+         <td> </td>
+         
+        
+        </table>
+        
+        
+
+        
+        
+        
+        <table style="width: 100%;">
+        <tr>
+        <td> <h3> Histogram Equalization  </h3> </td>
+        <td> <h3> Unsharp  </h3> </td>
+        <td> <h3>Histogram Equalization Based Method
+        </h3> </td>
+        </tr>
+        <tr>
+        <td> <input type="submit" value="HE" name="v1" class="btn btn-info"></td>
+         <td> <input type="submit" value="Unsharp" name="v4" class="btn btn-info"></td>
+          <td> <label for="iname"> G:</label> 
+          <input type="number" value="G: " name="G"> 
+           </td>
+        </tr>
+
+        <tr>
+        <td> </td>
+         <td> </td>
+          <td><input type="submit" value="HEBM+" name="v2" class="btn btn-info">  </td>
+        </tr>
+        
+        </table>
+        
+        
+        
+       <div id="nav">
+       <ul> 
+        <h3>Fuzzy logic-based histogram equalization
+        </h3>
+        <h>  
+          <p>
+          <label for="iname"> s1:</label>
+          <input type="number" value="s1: " name="s1">
+         </h>
+         <h>  
+           <label for="iname"> s2:</label>
+           <input type="number" value="s2: " name="s2">
+          </h>
+          <h>  
+            <label for="iname"> s3:</label>
+            <input type="number" value="s3: " name="s3">
+            </p>
+           </h>
+        
+        <p>
+        <h>
+            <input type="submit" value="Fuzzy" name="v3" class="btn btn-info">
+        </h>
+        </p>
+        </ul>
+    </div>
+
+        <div id="nav">
+        <ul> 
+        <h3>Image Enhancement by Linear Transformation
+        </h3>
+        
+    <h>
+         <p>
+            <label for="iname"> r1:</label>
+            <input type="number" value="r1: " name="r1">
+            
+          </h>
+          
+          <h> 
+         
+            <label for="iname"> r2:</label>
+            <input type="number" value="r2: " name="r2">
+         
+           </h> 
+            
+           <h>
+           
+           <label for="iname"> t1:</label>
+           <input type="number" value="t1: " name="t1">
+           
+           </h>
+            
+            <h>
+           
+            <label for="iname"> t2:</label>
+            <input type="number" value="t2: " name="t2">
+            </p>
+            </h> 
+        <p>
+        <h>
+            <input type="submit" value="Lineal" name="v5" class="btn btn-info">
+        </h>
+        </p> 
+
+        </ul>
+    </div>
+        
+    </form>
+ 
+ 
+<hr width=50%>
+</body>
+</html>
